@@ -1,0 +1,46 @@
+# Local development databases only — the app itself runs on the host.
+#
+#   docker compose -f docker-compose.dev.yml up -d
+#
+# Ports are deliberately non-standard (55432 / 56379) so this stack cannot
+# collide with a PostgreSQL or Redis already running on the machine. They match
+# the DATABASE_URL / REDIS_URL in backend/.env.
+name: maktab-davomat-dev
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: maktab-davomat-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: attendance
+      POSTGRES_USER: attendance
+      POSTGRES_PASSWORD: ${DEV_POSTGRES_PASSWORD:-devpassword}
+    ports:
+      - '127.0.0.1:55432:5432'
+    volumes:
+      - dev_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U attendance -d attendance']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: maktab-davomat-redis
+    restart: unless-stopped
+    command: ['redis-server', '--appendonly', 'yes']
+    ports:
+      - '127.0.0.1:56379:6379'
+    volumes:
+      - dev_redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  dev_postgres_data:
+  dev_redis_data:

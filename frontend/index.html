@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#24235d" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#24235d" />
+    <meta name="description" content="Ota-onalar uchun maktab davomati shaxsiy kabineti" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Maktab davomat" />
+    <meta property="og:description" content="Ota-onalar uchun maktab davomati shaxsiy kabineti" />
+    <meta property="og:image" content="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Maktab davomat</title>
+    <script>
+      /* Stamp the palette before the first paint: React mounts later, and a
+         flash of the light theme on a dark one is worse than a blocking inline
+         script this small. Mirrors src/store/themeStore.ts.
+
+         `davomat.multiTheme` is the cached answer from the server's shared
+         appearance setting. If the extra palettes have been turned off for
+         everyone, an old personal choice of one of them must not flash up
+         before the store catches it. */
+      (function () {
+        try {
+          var stored = localStorage.getItem('davomat.theme')
+          var known = ['light', 'dark', 'violet', 'orange', 'emerald']
+          if (localStorage.getItem('davomat.multiTheme') === 'off') {
+            known = ['light', 'dark']
+            if (stored && known.indexOf(stored) === -1) stored = 'dark'
+          }
+          document.documentElement.setAttribute(
+            'data-theme',
+            known.indexOf(stored) === -1 ? 'light' : stored,
+          )
+        } catch (error) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

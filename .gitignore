@@ -1,0 +1,47 @@
+# --- secrets ---------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- python ----------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+.coverage.*
+celerybeat-schedule*
+
+# --- django ----------------------------------------------------------------
+backend/staticfiles/
+backend/media/
+*.sqlite3
+*.log
+
+# --- node ------------------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/coverage/
+.vite/
+npm-debug.log*
+
+# --- editors / os ----------------------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- local data that must never be published ------------------------------
+/face.jpg
+*.csv
+*.sql
+*.sql.gz
+*.dump
+backup*/

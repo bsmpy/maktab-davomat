@@ -1,0 +1,388 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------------------------------- *
+ * Themes
+ *
+ * One palette, five sets of values. Components never name a theme: they use
+ * `bg-ink-50`, `text-ink-900`, `bg-surface`, `border-ink-200` as before, and the
+ * variables under them change. The neutral ramp always runs page-background (50)
+ * to primary text (900), so the same class means the same thing on every theme.
+ *
+ * `light` is declared on bare :root as well, so a document with no data-theme
+ * still renders correctly.
+ * --------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+  --c-ink-50: 247 248 250;
+  --c-ink-100: 238 240 244;
+  --c-ink-200: 223 227 234;
+  --c-ink-300: 198 204 216;
+  --c-ink-400: 152 161 179;
+  --c-ink-500: 107 116 136;
+  --c-ink-600: 77 85 102;
+  --c-ink-700: 58 65 82;
+  --c-ink-800: 37 43 56;
+  --c-ink-900: 22 26 35;
+  --c-brand-50: 242 242 248;
+  --c-brand-100: 227 227 239;
+  --c-brand-200: 198 198 223;
+  --c-brand-300: 157 156 196;
+  --c-brand-400: 111 109 166;
+  --c-brand-500: 75 74 137;
+  --c-brand-600: 53 52 111;
+  --c-brand-700: 36 35 93;
+  --c-brand-800: 29 28 75;
+  --c-brand-900: 23 22 58;
+  --c-accent-50: 253 254 232;
+  --c-accent-100: 251 253 196;
+  --c-accent-200: 248 251 141;
+  --c-accent-300: 245 249 77;
+  --c-accent-400: 243 249 29;
+  --c-accent-500: 223 229 12;
+  --c-accent-600: 182 186 7;
+  --c-accent-700: 140 139 10;
+  --c-accent-800: 115 110 16;
+  --c-accent-900: 97 92 19;
+  --c-surface: 255 255 255;
+  --c-surface-2: 247 248 250;
+  --c-onbrand: 255 255 255;
+  --c-scrim: 16 24 40;
+  --app-bg: rgb(247 248 250);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --c-ink-50: 247 248 250;
+  --c-ink-100: 238 240 244;
+  --c-ink-200: 223 227 234;
+  --c-ink-300: 198 204 216;
+  --c-ink-400: 152 161 179;
+  --c-ink-500: 107 116 136;
+  --c-ink-600: 77 85 102;
+  --c-ink-700: 58 65 82;
+  --c-ink-800: 37 43 56;
+  --c-ink-900: 22 26 35;
+  --c-brand-50: 242 242 248;
+  --c-brand-100: 227 227 239;
+  --c-brand-200: 198 198 223;
+  --c-brand-300: 157 156 196;
+  --c-brand-400: 111 109 166;
+  --c-brand-500: 75 74 137;
+  --c-brand-600: 53 52 111;
+  --c-brand-700: 36 35 93;
+  --c-brand-800: 29 28 75;
+  --c-brand-900: 23 22 58;
+  --c-accent-50: 253 254 232;
+  --c-accent-100: 251 253 196;
+  --c-accent-200: 248 251 141;
+  --c-accent-300: 245 249 77;
+  --c-accent-400: 243 249 29;
+  --c-accent-500: 223 229 12;
+  --c-accent-600: 182 186 7;
+  --c-accent-700: 140 139 10;
+  --c-accent-800: 115 110 16;
+  --c-accent-900: 97 92 19;
+  --c-surface: 255 255 255;
+  --c-surface-2: 247 248 250;
+  --c-onbrand: 255 255 255;
+  --c-scrim: 16 24 40;
+  --app-bg: rgb(247 248 250);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-ink-50: 11 15 26;
+  --c-ink-100: 30 38 57;
+  --c-ink-200: 49 59 82;
+  --c-ink-300: 51 60 82;
+  --c-ink-400: 124 134 152;
+  --c-ink-500: 150 160 178;
+  --c-ink-600: 180 188 203;
+  --c-ink-700: 206 212 223;
+  --c-ink-800: 230 234 240;
+  --c-ink-900: 246 248 251;
+  --c-brand-50: 30 32 64;
+  --c-brand-100: 40 42 85;
+  --c-brand-200: 53 56 119;
+  --c-brand-300: 70 74 156;
+  --c-brand-400: 109 112 196;
+  --c-brand-500: 139 141 224;
+  --c-brand-600: 163 164 220;
+  --c-brand-700: 188 189 239;
+  --c-brand-800: 211 212 246;
+  --c-brand-900: 233 233 251;
+  --c-accent-50: 58 58 18;
+  --c-accent-100: 76 76 24;
+  --c-accent-200: 107 107 31;
+  --c-accent-300: 147 147 42;
+  --c-accent-400: 194 194 53;
+  --c-accent-500: 223 229 12;
+  --c-accent-600: 233 238 74;
+  --c-accent-700: 242 245 126;
+  --c-accent-800: 248 250 180;
+  --c-accent-900: 253 254 224;
+  --c-surface: 18 24 40;
+  --c-surface-2: 26 33 51;
+  --c-onbrand: 11 15 26;
+  --c-scrim: 0 0 0;
+  --app-bg: linear-gradient(135deg, #020617 0%, #111827 55%, #030712 100%);
+}
+
+:root[data-theme="violet"] {
+  color-scheme: dark;
+  --c-ink-50: 18 15 43;
+  --c-ink-100: 40 34 84;
+  --c-ink-200: 58 50 112;
+  --c-ink-300: 61 53 111;
+  --c-ink-400: 141 134 184;
+  --c-ink-500: 164 157 201;
+  --c-ink-600: 192 186 222;
+  --c-ink-700: 213 209 236;
+  --c-ink-800: 233 230 246;
+  --c-ink-900: 248 247 253;
+  --c-brand-50: 36 31 82;
+  --c-brand-100: 47 40 104;
+  --c-brand-200: 63 54 136;
+  --c-brand-300: 85 72 173;
+  --c-brand-400: 111 102 214;
+  --c-brand-500: 139 131 234;
+  --c-brand-600: 164 157 242;
+  --c-brand-700: 188 182 247;
+  --c-brand-800: 212 208 251;
+  --c-brand-900: 235 233 254;
+  --c-accent-50: 59 31 74;
+  --c-accent-100: 77 40 96;
+  --c-accent-200: 107 53 127;
+  --c-accent-300: 143 69 166;
+  --c-accent-400: 185 92 203;
+  --c-accent-500: 215 116 228;
+  --c-accent-600: 231 143 239;
+  --c-accent-700: 240 174 245;
+  --c-accent-800: 247 205 249;
+  --c-accent-900: 252 232 253;
+  --c-surface: 26 22 64;
+  --c-surface-2: 34 29 82;
+  --c-onbrand: 18 15 43;
+  --c-scrim: 0 0 0;
+  --app-bg: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+:root[data-theme="orange"] {
+  color-scheme: dark;
+  --c-ink-50: 26 16 5;
+  --c-ink-100: 52 34 15;
+  --c-ink-200: 74 52 25;
+  --c-ink-300: 86 56 27;
+  --c-ink-400: 195 154 109;
+  --c-ink-500: 212 174 131;
+  --c-ink-600: 229 200 166;
+  --c-ink-700: 239 220 196;
+  --c-ink-800: 248 236 221;
+  --c-ink-900: 253 247 239;
+  --c-brand-50: 58 29 6;
+  --c-brand-100: 77 39 8;
+  --c-brand-200: 107 54 10;
+  --c-brand-300: 146 72 12;
+  --c-brand-400: 201 102 15;
+  --c-brand-500: 249 115 22;
+  --c-brand-600: 251 143 60;
+  --c-brand-700: 253 173 104;
+  --c-brand-800: 254 203 156;
+  --c-brand-900: 255 230 207;
+  --c-accent-50: 63 42 5;
+  --c-accent-100: 82 54 7;
+  --c-accent-200: 113 73 10;
+  --c-accent-300: 152 98 13;
+  --c-accent-400: 199 129 18;
+  --c-accent-500: 240 163 24;
+  --c-accent-600: 244 185 76;
+  --c-accent-700: 248 207 128;
+  --c-accent-800: 251 227 179;
+  --c-accent-900: 253 243 224;
+  --c-surface: 35 23 10;
+  --c-surface-2: 46 30 13;
+  --c-onbrand: 26 16 5;
+  --c-scrim: 0 0 0;
+  --app-bg: rgb(26 16 5);
+}
+
+:root[data-theme="emerald"] {
+  color-scheme: dark;
+  --c-ink-50: 4 20 15;
+  --c-ink-100: 14 46 37;
+  --c-ink-200: 26 64 52;
+  --c-ink-300: 26 74 58;
+  --c-ink-400: 111 174 149;
+  --c-ink-500: 140 194 171;
+  --c-ink-600: 176 216 198;
+  --c-ink-700: 205 232 219;
+  --c-ink-800: 230 245 238;
+  --c-ink-900: 244 251 248;
+  --c-brand-50: 5 39 29;
+  --c-brand-100: 7 53 39;
+  --c-brand-200: 10 74 54;
+  --c-brand-300: 13 100 72;
+  --c-brand-400: 16 137 95;
+  --c-brand-500: 16 185 129;
+  --c-brand-600: 52 211 153;
+  --c-brand-700: 110 231 183;
+  --c-brand-800: 167 243 208;
+  --c-brand-900: 209 250 229;
+  --c-accent-50: 11 43 46;
+  --c-accent-100: 15 57 61;
+  --c-accent-200: 21 80 84;
+  --c-accent-300: 28 108 114;
+  --c-accent-400: 38 142 150;
+  --c-accent-500: 49 176 186;
+  --c-accent-600: 95 201 209;
+  --c-accent-700: 147 222 228;
+  --c-accent-800: 194 238 241;
+  --c-accent-900: 228 248 250;
+  --c-surface: 7 32 26;
+  --c-surface-2: 11 44 35;
+  --c-onbrand: 4 20 15;
+  --c-scrim: 0 0 0;
+  --app-bg: linear-gradient(135deg, #04130f 0%, #064e3b 50%, #022c22 100%);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    /* A single element that overruns its row must not give the whole document
+       a sideways scrollbar. `clip` rather than `hidden`: `hidden` would turn
+       the document into a scroll container and break the sticky navbar. */
+    overflow-x: clip;
+    /* Rotating a phone must not resize the type. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply text-ink-800 antialiased;
+    /* Fixed, so the gradient belongs to the window rather than scrolling with
+       the content and banding. */
+    background: var(--app-bg) fixed;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Keyboard focus stays visible; pointer focus does not add noise. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500/60 ring-offset-2 ring-offset-surface;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-2 w-2;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-300;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink-200/70 bg-surface shadow-card;
+  }
+
+  .card-hover {
+    @apply transition-shadow duration-200 hover:shadow-raised;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700;
+  }
+
+  /* 16px on a phone on purpose: iOS Safari zooms the page in on any field it
+     has to focus at a smaller size, and the zoom does not come back out. From
+     `sm` up the field returns to the denser 15px the rest of the UI uses. */
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-surface px-3.5 py-2.5 text-base text-ink-800
+           placeholder:text-ink-400 transition sm:text-[15px]
+           focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-500/10
+           disabled:cursor-not-allowed disabled:bg-ink-50 disabled:text-ink-400;
+  }
+
+  .input-error {
+    @apply border-red-300 focus:border-red-400 focus:ring-red-500/10;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-ink-100;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* A row of controls that is allowed to run off the side on a narrow screen
+     rather than wrapping into a ragged block: it scrolls, and each control
+     snaps into place. Used by the settings rail and the segmented tabs. */
+  .rail-x {
+    @apply flex snap-x snap-mandatory overflow-x-auto scrollbar-none;
+    scroll-padding-inline: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rail-x > * {
+    @apply snap-start;
+  }
+
+  /* The phone's home-indicator strip. Anything pinned to the bottom edge adds
+     it so the last row is not sitting under the gesture bar. */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mb-safe {
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer components {
+  /* Slow motes drifting up the page, behind everything and ignoring the
+     pointer. Tinted from the brand colour, so they follow the theme. */
+  .particles {
+    position: fixed;
+    inset: 0;
+    /* Above the navbar, the rail and the content — below a modal and a toast,
+       which are focused surfaces that should not be drifted over. */
+    z-index: 45;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    bottom: -8px;
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-500) / 0.5);
+    animation: particle-float 15s infinite linear;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .particle {
+      display: none;
+    }
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
