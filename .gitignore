@@ -41,6 +41,8 @@ Thumbs.db
 # --- local data that must never be published ------------------------------
 /face.jpg
 *.csv
+*.xlsx
+*.xls
 *.sql
 *.sql.gz
 *.dump
