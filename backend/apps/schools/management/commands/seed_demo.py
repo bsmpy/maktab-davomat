@@ -15,7 +15,8 @@ from __future__ import annotations
 import random
 from datetime import date, datetime, time, timedelta
 
-from django.core.management.base import BaseCommand
+from django.conf import settings
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils import timezone
 
@@ -110,6 +111,10 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **options):
+        # Creates a superuser and staff accounts whose password is published in
+        # the README: never on a production database.
+        if not settings.DEBUG:
+            raise CommandError("seed_demo faqat DJANGO_DEBUG=True bilan ishlaydi.")
         random.seed(options["seed"])
         self.rng = random.Random(options["seed"])
 

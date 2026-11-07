@@ -443,7 +443,7 @@ opened from; the matching `backend/.env` values are in
 > The register is filled from **Boshqaruv** or the Excel import.
 
 ```bash
-cd backend && python manage.py seed_demo
+cd backend && python manage.py seed_demo   # refuses to run unless DJANGO_DEBUG=True
 ```
 
 Creates one school, grades 1–11, 24 class groups (`1-A`, `1-B`, `1-D`, `2-A`, …,
